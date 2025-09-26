@@ -78,8 +78,10 @@ int main(int argc, char *argv[]) {
     // ---------------- 測定開始 ----------------
     double start_time = MPI_Wtime();
 
-    int taylor_list[] = {1,3,5,7,9,11,13,15,17,19,21,23};
-    long long N_list[] = {10,50,100,500,1000,5000,10000,50000,100000,500000,1000000,5000000,10000000};
+    // int taylor_list[] = {1,3,5,7,9,11,13,15,17,19,21,23,25,27};
+    // long long N_list[] = {10,50,100,500,1000,5000,10000,50000,100000,500000,1000000,5000000,10000000, 50000000, 100000000};
+    int taylor_list[] = {25};
+    long long N_list[] = {100000000};
     size_t n_t, n_N;
 
     for (n_t = 0; n_t < sizeof(taylor_list)/sizeof(taylor_list[0]); n_t++) {

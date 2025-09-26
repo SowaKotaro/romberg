@@ -1,0 +1,14 @@
+Loading openmpi/5.0.7-gcc
+  Loading requirement: cuda/12.8.0
+/bin/ld: /tmp/4962536.1.prior/ccbppJeJ.o: undefined reference to symbol 'pow@@GLIBC_2.29'
+/bin/ld: /usr/lib64/libm.so.6: error adding symbols: DSO missing from command line
+collect2: error: ld returned 1 exit status
+--------------------------------------------------------------------------
+prterun was unable to launch the specified application as it lacked
+permissions to execute an executable:
+
+   Executable: ./trapezoidal.out
+   Node: r20n7
+
+while attempting to start process rank 0.
+--------------------------------------------------------------------------

@@ -1,6 +1,22 @@
 #include <stdio.h>
 #include <math.h>
 
+// 25次でのsin(x)+cos(x)のテイラー展開
+double f_taylor(double x) {
+    double sum = 1.0; // 0次の項
+    double term = 1.0;
+    for (int i = 1; i <= 25; i++) {
+        term = term * x / i;
+        int sign_selector = i / 2;
+        if (sign_selector % 2 != 0) {
+             sum -= term;
+        } else {
+             sum += term;
+        }
+    }
+    return sum;
+}
+
 #define TRUE_VALUE 2.0
 #define EPS 1e-15
 #define MAX_LEVEL 20   // 念のための最大反復回数
@@ -14,9 +30,9 @@ double f(double x) {
 // n分割台形公式の値を返す
 double trapezoidal(double a, double b, int n) {
     double h = (b - a) / n;
-    double sum = 0.5 * (f(a) + f(b));
+    double sum = 0.5 * (f_taylor(a) + f_taylor(b));
     for (int i = 1; i < n; i++) {
-        sum += f(a + i * h);
+        sum += f_taylor(a + i * h);
     }
     return sum * h;
 }
@@ -24,7 +40,7 @@ double trapezoidal(double a, double b, int n) {
 int main(void) {
     double a = 0.0, b = M_PI;
     double R[MAX_LEVEL][MAX_LEVEL];  // ロンバーグ表
-    int n = 2; // 初期分割数
+    int n = 1; // 初期分割数
     int k, j;
 
     // 最初の値（台形公式）
